@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -9,8 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ApolloWpf.Business\ApolloWpf.Business.csproj" />
-    <ProjectReference Include="..\ApolloWpf.Model\ApolloWpf.Model.csproj" />
+    <ProjectReference Include="..\Apollo.MVVM\Apollo.MVVM.csproj" />
+    <ProjectReference Include="..\Apollo.Sample.Model.Business\Apollo.Sample.Model.Business.csproj" />
   </ItemGroup>
 
   <ItemGroup>

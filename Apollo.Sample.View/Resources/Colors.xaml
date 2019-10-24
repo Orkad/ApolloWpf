@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Apollo.Sample.View.Resources">
+    <Color x:Key="RedColor">#8C0428</Color>
+    <Color x:Key="BlueColor">#127CA6</Color>
+    <Color x:Key="YellowColor">#F2E85C</Color>
+    <Color x:Key="YellOrangeColor">#F2B84B</Color>
+    <Color x:Key="OrangeColor">#F26430</Color>
+
+    <SolidColorBrush x:Key="RedColorBrush" Color="{StaticResource RedColor}"/>
+    <SolidColorBrush x:Key="BlueColorBrush" Color="{StaticResource BlueColor}"/>
+    <SolidColorBrush x:Key="YellowColorBrush" Color="{StaticResource YellowColor}"/>
+    <SolidColorBrush x:Key="YellOrangeColorBrush" Color="{StaticResource YellOrangeColor}"/>
+    <SolidColorBrush x:Key="OrangeColorBrush" Color="{StaticResource OrangeColor}"/>
+</ResourceDictionary>

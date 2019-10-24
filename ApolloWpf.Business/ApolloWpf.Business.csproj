@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApolloWpf.Model\ApolloWpf.Model.csproj" />
-    <ProjectReference Include="..\ApolloWpf.Repository\ApolloWpf.Repository.csproj" />
   </ItemGroup>
 
 </Project>

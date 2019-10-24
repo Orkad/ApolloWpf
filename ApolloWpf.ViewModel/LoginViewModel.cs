@@ -1,5 +1,8 @@
-﻿using ApolloWpf.Business;
+﻿using Apollo.MVVM.Navigation;
+using Apollo.Sample.Model.Business.Services;
+using ApolloWpf.Business;
 using ApolloWpfCore.Abstract;
+using ApolloWpfCore.Interfaces;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using System;
@@ -9,29 +12,28 @@ using System.Windows.Input;
 
 namespace ApolloWpf.ViewModel
 {
-    public class LoginViewModel:NavigableViewModelBase
+    public class LoginViewModel : NavigableViewModelBase
     {
         private readonly IAuthenticationService _authenticationService;
-        private string _username;
-        private SecureString _password;
+        private string username;
+        private SecureString password;
 
         public string Username
         {
-            get => _username;
-            set => Set(ref _username, value);
+            get => username;
+            set => Set(ref username, value);
         }
 
-        public SecureString Password
-        {
-            get => _password;
-            set => Set(ref _password, value);
+        public SecureString Password {
+            get => password;
+            set => Set(ref password, value);
         }
 
         public ICommand LoginCommand { get; }
 
 
         public LoginViewModel(INavigationService navigationService, IDialogService dialogService, IAuthenticationService authenticationService)
-            :base(navigationService, dialogService)
+            : base(navigationService, dialogService)
         {
             _authenticationService = authenticationService;
             LoginCommand = new RelayCommand(async () =>
@@ -49,7 +51,7 @@ namespace ApolloWpf.ViewModel
 
         private async Task Login()
         {
-            _authenticationService.Login(Username, Password);
+            _authenticationService.Login(username, password);
             if (_authenticationService.IsLoggedIn())
             {
                 await NavigateToAsync("users");

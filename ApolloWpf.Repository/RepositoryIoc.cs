@@ -4,9 +4,9 @@ using GalaSoft.MvvmLight.Ioc;
 
 namespace ApolloWpf.Repository
 {
-    public static class RepositoryIoc
+    public class RepositoryInstaller : IInstaller
     {
-        public static void Register()
+        public void Install()
         {
             SimpleIoc.Default.Register<IRepository<User>, UserRepository>();
             SimpleIoc.Default.Register<IRepository<UserGroup>, UserGroupRepository>();
