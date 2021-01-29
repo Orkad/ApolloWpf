@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 
 namespace Apollo.WPF.Behaviors
 {

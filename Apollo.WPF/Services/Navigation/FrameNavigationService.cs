@@ -1,13 +1,10 @@
-﻿using System;
+﻿using Apollo.MVVM.Navigation;
+using GalaSoft.MvvmLight.Views;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using GalaSoft.MvvmLight.Views;
-using Apollo.MVVM.Navigation;
 
 namespace Apollo.WPF.Services.Navigation
 {
@@ -44,7 +41,7 @@ namespace Apollo.WPF.Services.Navigation
                 MainWindow.Content = page;
 
                 var navigable = page.DataContext as INavigable;
-                navigable.OnNavigatedTo();
+                navigable?.OnNavigatedTo();
             }
         }
 

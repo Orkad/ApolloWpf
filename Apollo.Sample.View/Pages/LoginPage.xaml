@@ -7,7 +7,7 @@
       xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
-      DataContext="{Binding Path=Login, Source={StaticResource ViewModelLocator}}"
+      DataContext="{Binding Path=LoginViewModel, Source={StaticResource ViewModelLocator}}"
       Title="LoginPage">
 
     <Border Width="250" Margin="30">
@@ -22,7 +22,7 @@
                 <PasswordBox b:PasswordBoxBehavior.BindPassword="True" b:PasswordBoxBehavior.BoundPassword="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
             <Button Command="{Binding LoginCommand}" IsDefault="True">Connexion</Button>
-            <Button Command="{Binding NavigateCommand}" CommandParameter="REGISTERPAGE">Inscription</Button>
+            <Button Command="{Binding RegisterCommand}">Inscription</Button>
         </StackPanel>
     </Border>
 </Page>

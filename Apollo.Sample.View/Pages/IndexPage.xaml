@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:Apollo.Sample.View.Pages"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
-      DataContext="{Binding Path=Index, Source={StaticResource ViewModelLocator}}"
+      DataContext="{Binding Path=IndexViewModel, Source={StaticResource ViewModelLocator}}"
       Title="MainPage">
 
     <Grid>
-        
+        <TextBlock>Index</TextBlock>
     </Grid>
 </Page>

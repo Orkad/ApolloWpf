@@ -1,8 +1,7 @@
-﻿using Apollo.MVVM;
+﻿using Apollo.MVVM.Commands;
 using Apollo.Sample.Model.Business.Services;
 using Apollo.Sample.ViewModel;
-using Apollo.Sample.ViewModel.Designs;
-using Apollo.Sample.ViewModel.Runtimes;
+using Apollo.WPF.Factories;
 using Apollo.WPF.Services.Dialog;
 using Apollo.WPF.Services.Navigation;
 using GalaSoft.MvvmLight;
@@ -35,6 +34,14 @@ namespace Apollo.Sample.View
             => SimpleIoc.Default.Register<TInterface, TClass>();
 
         /// <summary>
+        /// Enregistre une définition
+        /// </summary>
+        /// <typeparam name="TClass">définition de l'instance</typeparam>
+        static void Register<TClass>()
+            where TClass : class
+            => SimpleIoc.Default.Register<TClass>();
+
+        /// <summary>
         /// Enregistre une instance en tant que singleton pour l'interface donnée
         /// </summary>
         /// <typeparam name="TInterface">interface donné</typeparam>
@@ -49,26 +56,23 @@ namespace Apollo.Sample.View
         {
             if (ViewModelBase.IsInDesignModeStatic)
             {
-                Register<IMainViewModel, MainDesignViewModel>();
-                Register<ILoginViewModel, LoginDesignViewModel>();
-                Register<IRegisterViewModel, RegisterDesignViewModel>();
-                Register<IIndexViewModel, IndexDesignViewModel>();
                 return;
             }
 
             // View Models
-            Register<IMainViewModel, MainViewModel>();
-            Register<ILoginViewModel, LoginViewModel>();
-            Register<IRegisterViewModel, RegisterViewModel>();
-            Register<IIndexViewModel, IndexViewModel>();
+            Register<MainViewModel>();
+            Register<LoginViewModel>();
+            Register<RegisterViewModel>();
+            Register<IndexViewModel>();
 
             // Services
             Register<IAuthenticationService, AuthenticationService>();
             Register<IUserService, UserService>();
 
-            // View Services
+            // View Services (WPF)
             RegisterSingleton<INavigationService>(GetConfiguredNavigationService());
             RegisterSingleton<IDialogService>(new MetroDialogService());
+            RegisterSingleton<ICommandFactory>(new WpfCommandFactory());
         }
 
         private static FrameNavigationService GetConfiguredNavigationService()
@@ -84,9 +88,9 @@ namespace Apollo.Sample.View
             return navigationService;
         }
 
-        public IMainViewModel MainViewModel => Resolve<IMainViewModel>();
-        public ILoginViewModel LoginViewModel => Resolve<ILoginViewModel>();
-        public IRegisterViewModel RegisterViewModel => Resolve<IRegisterViewModel>();
-        public IIndexViewModel IndexViewModel => Resolve<IIndexViewModel>();
+        public MainViewModel MainViewModel => Resolve<MainViewModel>();
+        public LoginViewModel LoginViewModel => Resolve<LoginViewModel>();
+        public RegisterViewModel RegisterViewModel => Resolve<RegisterViewModel>();
+        public IndexViewModel IndexViewModel => Resolve<IndexViewModel>();
     }
 }

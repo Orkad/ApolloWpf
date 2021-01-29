@@ -1,5 +1,4 @@
 ﻿using Apollo.MVVM.Extensions;
-using Apollo.MVVM.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +18,7 @@ namespace Apollo.Sample.Model.Business.Services
             _userService = userService;
             _users = new List<InternalIdentityWithPassword>()
             {
-                new InternalIdentityWithPassword(){ 
+                new InternalIdentityWithPassword(){
                     Email = null,
                     Username = "admin"
                 }.WithClearPassword("admin"),
@@ -72,7 +71,7 @@ namespace Apollo.Sample.Model.Business.Services
             {
                 throw new BusinessException("Erreur de combinaison nom d'utilisateur / mot de passe");
             }
-            Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(username, "password"), new []{ "user" });
+            Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(username, "password"), new[] { "user" });
             //GetApolloPrincipal().Identity = new SimpleIdentity(user.Username, user.Role);
             return GetLoggedUser();
         }

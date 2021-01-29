@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Behaviors\MarginSetter.cs" />
     <Compile Include="Behaviors\PasswordBoxBehavior.cs" />
+    <Compile Include="Factories\WpfCommandFactory.cs" />
     <Compile Include="Services\Dialog\MetroDialogService.cs" />
     <Compile Include="Services\Navigation\FrameNavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

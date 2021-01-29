@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Apollo.Sample.View.Pages"
       mc:Ignorable="d"
       xmlns:b="clr-namespace:Apollo.WPF.Behaviors;assembly=Apollo.WPF"
-      DataContext="{Binding Path=Register, Source={StaticResource ViewModelLocator}}"
+      DataContext="{Binding Path=RegisterViewModel, Source={StaticResource ViewModelLocator}}"
       
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegisterPage">

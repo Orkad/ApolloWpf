@@ -1,18 +1,14 @@
-﻿using Apollo.MVVM;
-using Apollo.MVVM.Navigation;
-using Apollo.Sample.Model.Business;
+﻿using Apollo.Sample.Model.Business;
 using Apollo.Sample.Model.Business.Services;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
-using System;
 using System.Security;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Apollo.Sample.ViewModel.Runtimes
+namespace Apollo.Sample.ViewModel
 {
-    public class RegisterViewModel : ViewModelBase, IRegisterViewModel
+    public class RegisterViewModel : ViewModelBase
     {
         public RegisterViewModel(INavigationService navigationService, IDialogService dialogService, IAuthenticationService authenticationService)
         {

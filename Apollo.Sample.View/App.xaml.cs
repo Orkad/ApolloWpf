@@ -1,9 +1,7 @@
 ﻿using Apollo.MVVM.Security;
 using Apollo.Sample.View.Windows;
-using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Threading;
 using GalaSoft.MvvmLight.Views;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
