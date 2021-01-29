@@ -1,6 +1,5 @@
 ﻿using Apollo.MVVM.Security;
 using Apollo.Sample.View.Windows;
-using ApolloWpf.ViewModel;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Threading;
 using GalaSoft.MvvmLight.Views;
@@ -21,13 +20,17 @@ namespace Apollo.Sample.View
             DispatcherHelper.Initialize();
             base.OnStartup(e);
             Thread.CurrentPrincipal = new SimplePrincipal();
+
+            INavigationService navigationService = null;
             await Task.Run(() =>
             {
-                new ApplicationInstaller().Install();
+                Thread.Sleep(3000);
+                navigationService = ViewModelLocator.Resolve<INavigationService>();
             });
             ShutdownMode = ShutdownMode.OnExplicitShutdown;
             MainWindow.Close();
             MainWindow = new MainWindow();
+            navigationService.NavigateTo("LoginPage");
             MainWindow.Show();
             ShutdownMode = ShutdownMode.OnMainWindowClose;
         }

@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace Apollo.Sample.Model.Business.Services
 {
-    internal class AuthenticationService : IAuthenticationService
+    public class AuthenticationService : IAuthenticationService
     {
         private readonly IUserService _userService;
         private readonly List<InternalIdentityWithPassword> _users;
@@ -23,6 +23,10 @@ namespace Apollo.Sample.Model.Business.Services
                     Email = null,
                     Username = "admin"
                 }.WithClearPassword("admin"),
+                new InternalIdentityWithPassword
+                {
+                    Username = "nicolas.gidon",
+                }.WithClearPassword("nicholas")
             };
         }
 
@@ -57,16 +61,16 @@ namespace Apollo.Sample.Model.Business.Services
             }
             if (string.IsNullOrWhiteSpace(username))
             {
-                throw new Exception("Le nom d'utilisateur ne peut être vide");
+                throw new BusinessException("Le nom d'utilisateur ne peut être vide");
             }
             if (password == null || password.Length == 0)
             {
-                throw new Exception("Le mot de passe ne peut être vide");
+                throw new BusinessException("Le mot de passe ne peut être vide");
             }
             var user = _users.FirstOrDefault(d => d.Username == username && d.CheckPassword(password));
             if (user == null)
             {
-                throw new Exception("Erreur de combinaison nom d'utilisateur / mot de passe");
+                throw new BusinessException("Erreur de combinaison nom d'utilisateur / mot de passe");
             }
             Thread.CurrentPrincipal = new GenericPrincipal(new GenericIdentity(username, "password"), new []{ "user" });
             //GetApolloPrincipal().Identity = new SimpleIdentity(user.Username, user.Role);
@@ -77,7 +81,7 @@ namespace Apollo.Sample.Model.Business.Services
         {
             if (!IsLoggedIn())
             {
-                throw new Exception("Déjà déconnecté");
+                throw new BusinessException("Déjà déconnecté");
             }
             Thread.CurrentPrincipal = null;
         }
@@ -93,6 +97,22 @@ namespace Apollo.Sample.Model.Business.Services
 
         public void Register(string email, string username, SecureString password)
         {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                throw new BusinessException("L'email est obligatoire");
+            }
+            if (!email.IsEmail())
+            {
+                throw new BusinessException("Le format de l'email renseigné est incorrect");
+            }
+            if (username != null && username.Length < 4)
+            {
+                throw new BusinessException("Le nom d'utilisateur est obligatoire et doit faire 4 caractères minimum");
+            }
+            if (password.Length < 5)
+            {
+                throw new BusinessException("Le mot de passe doit faire 5 caractères minimum");
+            }
             _users.Add(new InternalIdentityWithPassword()
             {
                 Email = email,

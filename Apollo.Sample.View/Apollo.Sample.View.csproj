@@ -57,10 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ApplicationInstaller.cs" />
     <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModelLocator.cs" />
     <Compile Include="Windows\LoadingWindow.xaml.cs">
       <DependentUpon>LoadingWindow.xaml</DependentUpon>
     </Compile>
@@ -75,7 +75,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\MainPage.xaml">
+    <Page Include="Pages\IndexPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -100,8 +100,8 @@
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="Pages\IndexPage.xaml.cs">
+      <DependentUpon>IndexPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -137,6 +137,10 @@
     <ProjectReference Include="..\Apollo.MVVM\Apollo.MVVM.csproj">
       <Project>{512EAF6E-8F34-4694-BC01-D5D460B1FD0D}</Project>
       <Name>Apollo.MVVM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Apollo.Sample.Model.Business\Apollo.Sample.Model.Business.csproj">
+      <Project>{D078D0F8-FB76-486D-B1E8-D1C1A24FF4E2}</Project>
+      <Name>Apollo.Sample.Model.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\Apollo.Sample.ViewModel\Apollo.Sample.ViewModel.csproj">
       <Project>{a7adc3d8-ccaf-4854-9eec-548f77dfb037}</Project>

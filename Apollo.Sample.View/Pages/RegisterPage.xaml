@@ -5,12 +5,30 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Apollo.Sample.View.Pages"
       mc:Ignorable="d"
+      xmlns:b="clr-namespace:Apollo.WPF.Behaviors;assembly=Apollo.WPF"
       DataContext="{Binding Path=Register, Source={StaticResource ViewModelLocator}}"
       
       d:DesignHeight="450" d:DesignWidth="800"
       Title="RegisterPage">
 
     <Grid>
-        
+        <Border Width="250" Margin="30">
+            <StackPanel b:MarginSetter.Margin="0,5">
+                <Image Source="{StaticResource ApolloLogo}"/>
+                <StackPanel>
+                    <Label>Adresse email :</Label>
+                    <TextBox Text="{Binding Email}" />
+                </StackPanel>
+                <StackPanel>
+                    <Label>Nom d'utilisateur :</Label>
+                    <TextBox Text="{Binding Username}" />
+                </StackPanel>
+                <StackPanel>
+                    <Label>Mot de passe :</Label>
+                    <PasswordBox b:PasswordBoxBehavior.BindPassword="True" b:PasswordBoxBehavior.BoundPassword="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+                <Button Command="{Binding RegisterCommand}">Valider</Button>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

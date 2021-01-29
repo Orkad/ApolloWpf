@@ -10,14 +10,19 @@
       DataContext="{Binding Path=Login, Source={StaticResource ViewModelLocator}}"
       Title="LoginPage">
 
-    <Border BorderThickness="5" Width="250" Margin="30" Height="210" BorderBrush="{StaticResource RedColorBrush}">
-        <StackPanel b:MarginSetter.Margin="5,3">
-            <Label>Utilisateur :</Label>
-            <TextBox Text="{Binding Username}" />
-            <Label>Mot de passe :</Label>
-            <PasswordBox b:PasswordBoxBehavior.BindPassword="True" b:PasswordBoxBehavior.BoundPassword="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <Button Command="{Binding LoginCommand}" Style="{StaticResource AccentedSquareButtonStyle}" IsDefault="True">Connexion</Button>
-            <Button Command="{Binding NavigateCommand}" CommandParameter="REGISTERPAGE" Style="{StaticResource AccentedSquareButtonStyle}">Inscription</Button>
+    <Border Width="250" Margin="30">
+        <StackPanel b:MarginSetter.Margin="0,5">
+            <Image Source="{StaticResource ApolloLogo}"/>
+            <StackPanel>
+                <Label>Utilisateur :</Label>
+                <TextBox Text="{Binding Username}" />
+            </StackPanel>
+            <StackPanel>
+                <Label>Mot de passe :</Label>
+                <PasswordBox b:PasswordBoxBehavior.BindPassword="True" b:PasswordBoxBehavior.BoundPassword="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+            <Button Command="{Binding LoginCommand}" IsDefault="True">Connexion</Button>
+            <Button Command="{Binding NavigateCommand}" CommandParameter="REGISTERPAGE">Inscription</Button>
         </StackPanel>
     </Border>
 </Page>

@@ -3,12 +3,12 @@ using System.Linq;
 
 namespace Apollo.Sample.Model.Business.Services
 {
-    internal class UserService : IUserService
+    public class UserService : IUserService
     {
         public static List<User> _userStorage => new List<User>()
         {
-            new User(){Id = 1, Username = "Apollo", GroupId = 2},
-            new User(){Id = 2, Username = "Orkad", GroupId = 1},
+            new User(){Id = 3, Username = "admin", LastName = "Administrateur", FirstName = "Administrateur"},
+            new User(){Id = 1, Username = "nicolas.gidon", LastName = "Gidon", FirstName = "Nicolas"}
         };
 
         public IEnumerable<User> GetUsers()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Security;
+using System.Text.RegularExpressions;
 
 namespace Apollo.MVVM.Extensions
 {
@@ -34,5 +35,15 @@ namespace Apollo.MVVM.Extensions
                 if (bstr1 != IntPtr.Zero) Marshal.ZeroFreeBSTR(bstr1);
             }
         }
+
+        static Regex ValidEmailRegex = new Regex(@"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
+                + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
+                + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$", RegexOptions.IgnoreCase);
+
+
+        /// <summary>
+        /// Vérifie si la valeur passée en paramètre est au format email
+        /// </summary>
+        public static bool IsEmail(this string value) => ValidEmailRegex.IsMatch(value);
     }
 }

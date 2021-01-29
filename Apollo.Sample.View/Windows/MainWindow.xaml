@@ -8,16 +8,30 @@
                         xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                         mc:Ignorable="d"
-                        Title="Apollo Sample" Height="450" Width="800"
-                        Background="Beige"
+                        Title="Apollo Sample" MinHeight="600" MinWidth="800"
                       DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}">
-
+    <pages:IndexPage DataContext="{Binding Path=Index, Source={StaticResource ViewModelLocator}}">
+    </pages:IndexPage>
     <!--  #Left commands  -->
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands>
-            <Button Content="{iconPacks:FontAwesome ArrowLeftSolid}" Command="{Binding BackCommand}" IsCancel="True" />
+            <Button Command="{Binding BackCommand}" IsCancel="True">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconFontAwesome Width="20" Height="20" Kind="CaretLeftSolid" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="retour" />
+                </StackPanel>
+            </Button>
         </controls:WindowCommands>
     </controls:MetroWindow.LeftWindowCommands>
-    <pages:LoginPage>
-    </pages:LoginPage>
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button Command="{Binding ProfileCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconFontAwesome Kind="UserAstronautSolid" />
+                    <TextBlock Margin="4 0 0 0" VerticalAlignment="Center" Text="{Binding Profile}" />
+                </StackPanel>
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+
 </controls:MetroWindow>

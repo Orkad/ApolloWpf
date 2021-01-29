@@ -12,4 +12,6 @@
     <SolidColorBrush x:Key="YellowColorBrush" Color="{StaticResource YellowColor}"/>
     <SolidColorBrush x:Key="YellOrangeColorBrush" Color="{StaticResource YellOrangeColor}"/>
     <SolidColorBrush x:Key="OrangeColorBrush" Color="{StaticResource OrangeColor}"/>
+
+    <BitmapImage x:Key="ApolloLogo" UriSource="Images/apollo-logo.png" />
 </ResourceDictionary>
