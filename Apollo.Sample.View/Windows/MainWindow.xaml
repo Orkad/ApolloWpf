@@ -9,9 +9,10 @@
                         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                         mc:Ignorable="d"
                         Title="Apollo Sample" MinHeight="600" MinWidth="800"
-                      DataContext="{Binding Path=Main, Source={StaticResource ViewModelLocator}}">
-    <pages:IndexPage DataContext="{Binding Path=Index, Source={StaticResource ViewModelLocator}}">
-    </pages:IndexPage>
+                      DataContext="{Binding Path=MainViewModel, Source={StaticResource ViewModelLocator}}">
+    <Frame x:Name="MainFrame">
+
+    </Frame>
     <!--  #Left commands  -->
     <controls:MetroWindow.LeftWindowCommands>
         <controls:WindowCommands>

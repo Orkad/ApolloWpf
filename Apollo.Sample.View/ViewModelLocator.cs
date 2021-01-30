@@ -1,5 +1,6 @@
 ﻿using Apollo.MVVM.Commands;
 using Apollo.Sample.Model.Business.Services;
+using Apollo.Sample.View.Pages;
 using Apollo.Sample.ViewModel;
 using Apollo.WPF.Factories;
 using Apollo.WPF.Services.Dialog;
@@ -9,6 +10,7 @@ using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Apollo.Sample.View
@@ -77,15 +79,11 @@ namespace Apollo.Sample.View
 
         private static FrameNavigationService GetConfiguredNavigationService()
         {
-            var navigationService = new FrameNavigationService();
-            var pages = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(t => typeof(Page).IsAssignableFrom(t));
-            foreach (var page in pages)
-            {
-                navigationService.Configure(page, page.Name);
-            }
-            return navigationService;
+            var nav = new FrameNavigationService();
+            nav.Configure<IndexPage>("IndexPage");
+            nav.Configure<LoginPage>("LoginPage");
+            nav.Configure<RegisterPage>("RegisterPage");
+            return nav;
         }
 
         public MainViewModel MainViewModel => Resolve<MainViewModel>();
